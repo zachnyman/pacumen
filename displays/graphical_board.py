@@ -1,3 +1,4 @@
+import os
 import sys
 import time
 
@@ -64,8 +65,13 @@ def begin_graphics(width=640, height=480, color=format_color(0, 0, 0), title=Non
     # Create the root window.
     _root_window = tkDisplay.Tk()
     _root_window.protocol('WM_DELETE_WINDOW', _destroy_window)
-    _root_window.title(title or "Pac-Man Graphical Display")
+    _root_window.title(title or "Pacumen Graphical Display")
     _root_window.resizable(0, 0)
+    _root_window.configure(background='black')
+
+    if sys.platform == "win32":
+        pacumen_icon = os.path.dirname(os.path.realpath(__file__)) + "/pacman.ico"
+        _root_window.iconbitmap(pacumen_icon)
 
     # Create the canvas object.
     try:
