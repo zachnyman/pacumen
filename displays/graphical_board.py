@@ -75,7 +75,7 @@ def begin_graphics(width=640, height=480, color=format_color(0, 0, 0), title=Non
 
     # Create the canvas object.
     try:
-        _canvas = tkDisplay.Canvas(_root_window, width=width, height=height)
+        _canvas = tkDisplay.Canvas(_root_window, width=width, height=height, highlightthickness=0)
         _canvas.pack()
         draw_background()
         _canvas.update()
