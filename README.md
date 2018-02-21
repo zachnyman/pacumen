@@ -2,9 +2,47 @@
 
 ![pacumen](http://testerstories.com/files/pacumen/pacman.png)
 
-The name of this project is based on the name "Pac-Man" and the word "acumen." The term generally refers to the ability to make good judgments and quick decisions. This is often done in a particular domain.
+The name of this project is based on the name "Pac-Man" and the word "acumen." The word "acumen" generally refers to the ability to make good judgments and quick decisions. This is often done in a particular situation. In my case, that situation will be a Pac-Man game.
 
-To that end, **Pacumen** is an implementation of the [Pacman AI project](http://ai.berkeley.edu) developed at UC Berkeley. This is a project that allows you to provide customized Pac-Man variations and then apply learning algorithms to those variations. I'm using this project as part of my studies into reinforcement learning. This is also being used for my science fair and regionals project.
+**Pacumen** is a modified implementation of the [Pacman AI project](http://ai.berkeley.edu) developed at UC Berkeley. This is a project that allows you to provide customized Pac-Man variations and then apply learning algorithms to those variations. This project was updated by my dad and was renamed ["Pacumen"](https://github.com/jeffnyman/pacumen).
+
+I'm using my dad's project as part of my studies into reinforcement learning. This is also being used for my science fair and regionals project.
+
+### Algorithms
+
+My science project was based on algorithms and those were not provided to me. I had to figure out how to write them. My dad taught a class on [algorithmic searching](http://testerstories.com/category/ai/) and I was able to use some of those ideas to understand how to get started. But my project doesn't rely on algorithmic searching. The reason is because my project relies on adversarial searching, which is where Pac-Man has to deal with ghosts.
+
+So I had to learn how to write the algorithms for my science project on my own and based on my background research. Those algorithms can be found in my [agents_q_learning.py](https://github.com/zachnyman/pacumen/blob/master/agents_q_learning.py) file. In that file, you'll see the following agents:
+
+* PacmanControlAgent
+* PacmanExperimentAgent
+
+The `PacmanControlAgent` was actually a type of `QLearningAgent`. And the `PacmanExperimentAgent` was a type of `PacmanControlAgent` but with extra features. So every agent was using a Q-learning algorithm.
+
+The `PacmanExperimentAgent` ran all of my agents except for the control one. What differed was what features the experiment agent considered.
+
+### Feature Extraction
+
+All of my agents relied on feature extraction. All of how my features were extracted can be seen in the [feature_extractors.py](https://github.com/zachnyman/pacumen/blob/master/game/feature_extractors.py) file. There you'll see the following extractors:
+
+* IdentityExtractor
+* CoordinateExtractor
+* TacticExtractor
+* StrategyExtractor
+
+### Example Execution
+
+It was important for my project that the Pac-Man agents were not given a set of instructions. So there is no logic in my code that tells Pac-Man exactly what to do.
+
+The whole point of my project is that different agents were implemented using a Q-learning algorithm. That algorithm would be used by the Pac-Man agent and would differ in the types of features it considered important about the game.
+
+This is just like how a human who had never seen the game before would have to figure things out. They would look at the game board, try various actions, and start to learn what mattered and what didn't matter. Eventually that learning should allow them to get good at the game.
+
+The video link below is an example execution of one of my agents that got good at playing the game after it was given time to practice: 
+
+[Video of Pac-Man Q-Learning](http://testerstories.com/files/pacumen/pacumen-execute.mp4)
+
+It's really important to understand that all of that game play emerged from the above agent algorithms and feature extractors. None of that is hard-coded anywhere. And that could not be the case because the ghosts operate randomly. So any exact instructions would likely fail since those instructions could not be written to predict what the ghosts would do.
 
 ### Goal
 
